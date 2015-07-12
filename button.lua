@@ -1,4 +1,4 @@
-led=0
+led=2
 button=1
 flag=0
 print("Hello ESPToy!")

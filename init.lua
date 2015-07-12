@@ -13,7 +13,7 @@ if true then  --change to if true
 	    	tmr.stop(1)
 	    	if (cnt < 20) then print("Config done, IP is "..wifi.sta.getip())
 	    	--dofile("yourfile.lua")
-dofile("ledoff.lua")
+--dofile("ledoff.lua")
 	    	else print("Wifi setup time more than 20s, Please verify wifi.sta.config() function. Then re-download the file.")
 	    	end
 	    end 

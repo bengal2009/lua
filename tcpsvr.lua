@@ -1,7 +1,7 @@
 s=net.createServer(net.TCP)
  s:listen(80,function(c)
  c:on("receive",function(c,pl)
-  for v,i in pairs{0,8,9} do
+  for v,i in pairs{2} do
    gpio.mode(i,gpio.OUTPUT)
    c:send("\ngpio("..i.."):"..gpio.read(i))
    if string.find(pl,"gpio"..i.."=0") then gpio.write(i,0) end
