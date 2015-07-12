@@ -1,13 +1,3 @@
--- ***************************************************************************
--- Yeelink Updata Libiary Version 0.1.2 r1
---
--- Written by Martin
--- but based on a script of zhouxu_o from bbs.nodemcu.com
---
--- MIT license, http://opensource.org/licenses/MIT
--- ***************************************************************************
---==========================Module Part======================
-
 local moduleName = ...
 local M = {}
 _G[moduleName] = M
@@ -19,7 +9,7 @@ local sensor = ""
 local apikey = ""
 
 --================================
-local debug = true --<<<<<<<<<<<<< Don't forget to "false" it before using
+local debug =false--<<<<<<<<<<<<< Don't forget to "false" it before using
 --================================
 local sk=net.createConnection(net.TCP, 0)
 
@@ -92,43 +82,32 @@ end
 --e.g. xxx.update(233.333)
 --============================================================
 function M.update(_datapoint)
+sk=net.createConnection(net.TCP, 0)
+ips="42.96.164.52"
+sk:connect(80,ips)
 
-    datapoint = tostring(_datapoint)
-print(datapoint)
-    sk:on("connection", function(conn) 
+x=[[{]]
+y=[["value":]]
+z=[[}]]
 
-        print("connect OK...") 
 
-    
-    local a=[[{"value":]]
-    local b=[[}]]
+st=x..y.._datapoint..z
+print(st)
 
-    local st=a..datapoint..b
-
-        sk:send("POST /v1.0/device/"..device.."/sensor/"..sensor.."/datapoints HTTP/1.1\r\n"
+sk:send("POST /v1.0/device/".."21817".."/sensor/".."156585".."/datapoints HTTP/1.1\r\n"
 .."Host: www.yeelink.net\r\n"
 .."Content-Length: "..string.len(st).."\r\n"--the length of json is important
 .."Content-Type: application/x-www-form-urlencoded\r\n"
-.."U-ApiKey:"..apikey.."\r\n"
+.."U-ApiKey:".."a96dce4941692401fe58b2a6d9fa2936".."\r\n"
 .."Cache-Control: no-cache\r\n\r\n"
 ..st.."\r\n" )
 
-    end)
 
-    sk:on("receive", function(sck, content) 
+--sk:on("sent", function(sck) sck:close() print("sent to server") end )
     
-    if debug then
-    print("\r\n"..content.."\r\n") 
-    else
-    print("Date Receive")
-    end
-
-    end)
-
-    sk:connect(80,dns)
 
 
 end
---================end==========================
+
 return M
 
