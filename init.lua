@@ -12,6 +12,9 @@ if true then  --change to if true
 	    else 
 	    	tmr.stop(1)
 	    	if (cnt < 20) then print("Config done, IP is "..wifi.sta.getip())
+--bc = wifi.ap.getbroadcast()
+--  print(bc)
+
 	    	--dofile("yourfile.lua")
 --dofile("ledoff.lua")
 	    	else print("Wifi setup time more than 20s, Please verify wifi.sta.config() function. Then re-download the file.")

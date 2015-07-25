@@ -1,4 +1,4 @@
-pin =2
+pin =8
 gpio.mode(pin,gpio.OUTPUT)
 gpio.write(pin,gpio.HIGH)
 --gpio.mode(pin,gpio.INPUT)
