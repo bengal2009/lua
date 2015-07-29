@@ -2,7 +2,7 @@ if true then  --change to if true
 	print("set up wifi mode")
 	wifi.setmode(wifi.STATION)
 	--please config ssid and password according to settings of your wireless router.
-	wifi.sta.config("MonkeyIsland","345cbd795b")
+	wifi.sta.config("XXX","XXX")
 	wifi.sta.connect()
 	cnt = 0
 	tmr.alarm(1, 1000, 1, function() 

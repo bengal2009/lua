@@ -7,23 +7,37 @@ function dispatch(m,t,pl)
  end
 end
 function topic1func(m,pl)
- print("get1: "..pl)
-local data = cjson.decode(pl)
-print(pl)
-print(data.led) 
+ local data = cjson.decode(pl)
+--print(pl)
+--print(data.led) 
+if(data.song=="1") then 
+dofile("bp.lua")
+end
 if(data.led=="1") then 
 gpio.mode(pin,gpio.OUTPUT)
 gpio.write(pin,gpio.HIGH)
-print ("LED1")
 else
 gpio.write(pin,gpio.LOW)
 end
+if(data.blink=="1") then 
+print("Blink")
+dofile("blink.lua")
+else
+tmr.stop(0)
 end
+if(data.mqtt=="0") then 
+m:unsubscribe("topic1")
+m:destroy()
+end
+end
+
+
+
 m_dis["topic1"]=topic1func
 
 m=mqtt.Client()
 m:on("connect",function(m) 
- print("connection "..node.heap()) 
+ --print("connection "..node.heap()) 
  m:subscribe("topic1",0,function(m) print("sub done") end)
  --m:publish("topic1","hello",0,0)
  end )

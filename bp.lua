@@ -115,7 +115,7 @@ beep(speakerPin, "7", 250)
  --beep(speakerPin, "3H", 500) 
 --beep(speakerPin, "2H", 500)
 beep(speakerPin, "1H", 800)
-
+ tmr.wdclr()
 --(3)(3)(5)(3)(4)(4)(4) (3)(2)57 （3）（6）(1) 
 
  
