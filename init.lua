@@ -2,7 +2,7 @@ if true then  --change to if true
 	print("set up wifi mode")
 	wifi.setmode(wifi.STATION)
 	--please config ssid and password according to settings of your wireless router.
-	wifi.sta.config("XXX","XXX")
+	wifi.sta.config("MonkeyIsland","345cbd795b")
 	wifi.sta.connect()
 	cnt = 0
 	tmr.alarm(1, 1000, 1, function() 
@@ -14,7 +14,6 @@ if true then  --change to if true
 	    	if (cnt < 20) then print("Config done, IP is "..wifi.sta.getip())
 --bc = wifi.ap.getbroadcast()
 --  print(bc)
-
 	    	--dofile("yourfile.lua")
 --dofile("ledoff.lua")
 	    	else print("Wifi setup time more than 20s, Please verify wifi.sta.config() function. Then re-download the file.")
